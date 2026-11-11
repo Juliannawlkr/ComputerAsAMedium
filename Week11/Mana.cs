@@ -4,7 +4,7 @@ using TMPro;
 public class PlayerMana : MonoBehaviour
 {
   public int mana = 100;
-  public TextMeshProUGUI manatext;
+  public TextMeshProUGUI manaText;
   public Animator animator;
 
   void Start()
