@@ -1,9 +1,10 @@
 using UnityEngine;
+using TMPro;
 
 public class PlayerMana : MonoBehaviour
 {
   public int mana = 100;
-  public TextMeshProUGUI mana text;
+  public TextMeshProUGUI manatext;
   public Animator animator;
 
   void Start()
@@ -11,9 +12,9 @@ public class PlayerMana : MonoBehaviour
     UpdateManaText();
   }
 
-  void update()
+  void Update()
   {
-    if (Input,GetKeyDown(KeyCode.F) && mana >=10)
+    if (Input.GetKeyDown(KeyCode.F) && mana >=10)
     {
       mana-= 10;
       animator.SetTrigger("UseMagic");
