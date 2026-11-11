@@ -14,7 +14,8 @@ public class PlayerMana : MonoBehaviour
 
   void Update()
   {
-    if (Input.GetKeyDown(KeyCode.F) && mana >=10)
+    if (Keyboard.current != null &&
+            Keyboard.current.fKey.wasPressedThisFrame && mana >= 10)
     {
       mana-= 10;
       animator.SetTrigger("UseMagic");
