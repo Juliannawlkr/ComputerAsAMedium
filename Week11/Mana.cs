@@ -1,30 +1,35 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 using TMPro;
 
 public class PlayerMana : MonoBehaviour
 {
-  public int mana = 100;
-  public TextMeshProUGUI manaText;
-  public Animator animator;
+    public int mana = 100;
+    public TMP_Text manaText;
 
-  void Start()
-  {
-    UpdateManaText();
-  }
+    public GameObject magicCircle;
+    public Transform firePoint;
 
-  void Update()
-  {
-    if (Keyboard.current != null &&
-            Keyboard.current.fKey.wasPressedThisFrame && mana >= 10)
+    void Start()
     {
-      mana-= 10;
-      animator.SetTrigger("UseMagic");
-      UpdateManaText();
+        UpdateManaText();
     }
-  }
 
-  void UpdateManaText()
-  {
-    manaText.text = "Mana: " + mana;
-  }
+    void Update()
+    {
+        if (Keyboard.current != null &&
+            Keyboard.current.fKey.wasPressedThisFrame && mana >= 10)
+        {
+            mana -= 10;
+
+            Instantiate(magicCircle, firePoint.position, firePoint.rotation);
+
+            UpdateManaText();
+        }
+    }
+
+    void UpdateManaText()
+    {
+        manaText.text = "Mana: " + mana;
+    }
 }
