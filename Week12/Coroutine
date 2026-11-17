@@ -1,0 +1,31 @@
+using System.Collections;
+using UnityEngine;
+
+public class Coroutine : MonoBehaviour
+{
+    private Enemy enemy;
+    private bool isDead = false;
+
+    void Start()
+    {
+        enemy = GetComponent<Enemy>();
+    }
+
+    void Update()
+    {
+        if (enemy != null && enemy.enemyHealth <= 0 && !isDead)
+        {
+            isDead = true;
+            StartCoroutine(DeathDelay());
+        }
+    }
+
+    IEnumerator DeathDelay()
+    {
+        Debug.Log("Enemy is dying!");
+
+        yield return new WaitForSeconds(3f);
+
+        Destroy(gameObject);
+    }
+}
